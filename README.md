@@ -4,7 +4,7 @@ At Zubale we are all about raising people up and inspiring people. To do that, w
 
 We hope doing this is fun, but we are also offering prizes for the best entries. The very best will be given a chance to come work with us, as we harness people's smart phones to change the world. 
 
-This challenge is self-paced, however, we do have 1 meetup's scheduled in the near future where we will be reviewing solutions and offering prizes. Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
+This challenge is self-paced, however, we do have a meetup scheduled in the near future where we will be reviewing solutions and offering prizes. Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
 
 Guadalajara: Thursday, April 25th from 7-10pm 
 
