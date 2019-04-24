@@ -9,7 +9,7 @@ This challenge is self-paced, however, we do have a meetup scheduled in the near
 Guadalajara: Thursday, April 25th from 7-10pm 
 
 The requirements are:
-1. Clone this repo and create your own branch
+1. Fork this repo and clone it to start working
 2. Build out a the service
 3. Provide an endpoint to allow quotes to be submitted 
 4. Provide an endpoint to allow votes on quotes to be submitted 
@@ -17,6 +17,6 @@ The requirements are:
 6. Push your code early and often 
 7. Provide a readme explaining your work and how to run it
 8. Include how to contact you in the readme
-9. When you are done, open a PR
+9. When you are done, open a PR from your fork to this repo
 
 Your solution does not need a front end, it can be just APIs. You are also free to use any technology or libraries you like, but extra points will be given for Kotlin and Spring. 
