@@ -12,19 +12,19 @@ The prizes are:
 
 To be considered for the prizes you will need to submit your work before May 13th.
  
-This challenge is self-paced; however, we do have a meetup scheduled in the near future where we will discuss the challenge and introduce to Zubale (pizza and drinks will be provided). Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
+This challenge is self-paced; however, we do have a meetup scheduled in the near future where we will discuss the challenge and introduce Zubale (pizza and drinks will be provided). Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
 
 Guadalajara: Thursday, April 25th from 7-10pm 
 
 The requirements are:
 1. Fork this repo and clone it to start working
-2. Build out a the service
+2. Build out a service
 3. Provide an endpoint to allow quotes to be submitted 
 4. Provide an endpoint to allow votes on quotes to be submitted 
 5. Provide an endpoint that returns the list of quotes in the order with the most votes
 6. Push your code early and often 
 7. Provide a readme explaining your work and how to run it
-8. Include how to contact you in the readme
+8. Include how to contact you in the readme (WhatsApp & Enail)
 9. When you are done, open a PR from your fork to this repo
 
 Your solution does not need a front end, it can be just APIs. You are also free to use any technology or libraries you like, but extra points will be given for Kotlin and Spring. 
