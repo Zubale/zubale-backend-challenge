@@ -12,7 +12,7 @@ The prizes are:
 
 To be considered for the prizes you will need to submit your work before May 13th.
  
-This challenge is self-paced; however, we do have a meetup scheduled in the near future where we will be reviewing solutions and offering prizes. Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
+This challenge is self-paced; however, we do have a meetup scheduled in the near future where we will discuss the challenge and introduce to Zubale (pizza and drinks will be provided). Please RSVP to attend here: https://docs.google.com/forms/d/1RwK22DIWBfLrz3UCF5bv-HXtxv-zGs9a9kjmL3vjoxw/edit?usp=sharing
 
 Guadalajara: Thursday, April 25th from 7-10pm 
 
