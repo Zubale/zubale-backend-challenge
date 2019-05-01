@@ -73,10 +73,14 @@
 					<compilerPlugins>
 						<plugin>jpa</plugin>
 						<plugin>spring</plugin>
+						<plugin>all-open</plugin>
 					</compilerPlugins>
 					<args>
 						<arg>-Xjsr305=strict</arg>
 					</args>
+					<pluginOptions>
+						<option>all-open:annotation=javax.persistence.Entity</option>
+					</pluginOptions>
 				</configuration>
 				<dependencies>
 					<dependency>
