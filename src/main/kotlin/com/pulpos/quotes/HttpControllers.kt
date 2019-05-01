@@ -15,7 +15,7 @@ class QuotesController {
         return "Not implemented yet"
     }
 
-    @GetMapping("/votedown")
+    @GetMapping("/voteup")
     fun voteUp(@RequestParam(name = "id") quoteId : Int) : String {
         return "Not implemented yet"
     }
