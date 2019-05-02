@@ -1,14 +1,19 @@
 package com.pulpos.quotes
 
+import com.pulpos.quotes.model.Quote
+import com.pulpos.quotes.repository.QuoteRepository
 import org.springframework.web.bind.annotation.*
+import org.springframework.http.ResponseEntity
+import java.util.*
+import javax.validation.Valid
+import org.springframework.http.HttpStatus
 
 @RestController
 @RequestMapping("/api/quotes")
-class QuotesController {
+class QuotesController(private val quoteRepository: QuoteRepository) {
     @GetMapping("/")
-    fun getAllQuotes() : String {
-        return "Not implemented yet"
-    }
+    fun getAllQuotes() : List<Quote> =
+        quoteRepository.findAll()
 
     @PostMapping("/submit")
     fun submit(@RequestParam quoteText : String) : String {
