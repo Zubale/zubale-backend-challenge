@@ -1,9 +1,7 @@
 package com.pulpos.quotes.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import java.time.LocalDate
+import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
@@ -12,5 +10,14 @@ data class Quote (
         val id: Long = 0,
 
         @get: NotBlank
-        val text: String = ""
+        val text: String = "",
+
+        val date: LocalDate,
+
+        val votes: Long = 0,
+
+        @ManyToOne val author: User,
+
+        val postedBy: String
+
 )
