@@ -16,9 +16,9 @@ class QuotesController(private val quoteRepository: QuoteRepository) {
         quoteRepository.findAll()
 
     @PostMapping("/submit")
-    fun submit(@RequestParam quoteText : String) : String {
-        return "Not implemented yet"
-    }
+    fun submit(@Valid @RequestBody quote : Quote) : Quote =
+        quoteRepository.save(quote)
+    
 
     @GetMapping("/voteup")
     fun voteUp(@RequestParam(name = "id") quoteId : Int) : String {
