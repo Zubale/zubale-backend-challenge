@@ -1,0 +1,4 @@
+rootProject.name = 'Zubale'
+include 'ZubaleBackEnd'
+findProject(':ZubaleBackEnd')?.name = 'Zubale'
+
