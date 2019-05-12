@@ -9,5 +9,8 @@ data class Vote(
 
     @OneToOne val quote: Quote,
 
-    @OneToOne val user: User
+    @OneToOne val user: User,
+
+    var positiveVote : Boolean
+
 )

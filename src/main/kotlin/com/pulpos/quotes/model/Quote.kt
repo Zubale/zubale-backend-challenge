@@ -11,13 +11,13 @@ data class Quote (
         val id: Long = 0,
 
         @get: NotBlank
-        val text: String = "",
+        var text: String = "",
 
         val date: LocalDate? = null,
 
-        val votes: Long = 0,
+        var votes: Long = 0,
 
-        val author: String = ""
+        var author: String = ""
 
 ) {
 
