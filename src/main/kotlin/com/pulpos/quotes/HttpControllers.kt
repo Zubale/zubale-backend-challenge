@@ -21,7 +21,7 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
     @PostMapping("/submit")
     fun submit(@Valid @RequestBody quote : Quote) : Quote {
         val user : User = userRepository.findById(1).get() //TODO: This user should be obtained using authentication
-        val author = if (quote.author.isBlank()) user.username else quote.author
+        val author = if (quote.author.isBlank()) user.getUsername() else quote.author
         val quoteToSave = Quote(text = quote.text, author =  author, date = LocalDate.now(), user = user)
 
         return quoteRepository.save(quoteToSave)
@@ -43,6 +43,7 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
     fun getQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int) : String {
         return "Not inplemented yet"
     }
+
 
 
 }
