@@ -7,11 +7,14 @@ import com.pulpos.quotes.repository.QuoteRepository
 import com.pulpos.quotes.repository.UserRepository
 import com.pulpos.quotes.repository.VoteRepository
 import org.springframework.web.bind.annotation.*
-import org.springframework.http.ResponseEntity
-import java.util.*
 import javax.validation.Valid
-import org.springframework.http.HttpStatus
 import java.time.LocalDate
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.authentication.AnonymousAuthenticationToken
+
+
+
+
 
 @RestController
 @RequestMapping("/api/quotes")
@@ -22,7 +25,8 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
 
     @PostMapping("/submit")
     fun submit(@Valid @RequestBody quote : Quote) : Quote {
-        val user : User = userRepository.findById(1).get() //TODO: This user should be obtained using authentication
+        val username = currentUsername()
+        val user : User = userRepository.findOneByUsername(username)!!
         val author = if (quote.author.isBlank()) user.getUsername() else quote.author
         val quoteToSave = Quote(text = quote.text, author =  author, date = LocalDate.now(), user = user)
 
@@ -33,8 +37,9 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
 
     @GetMapping("/voteup")
     fun voteUp(@RequestParam(name = "id") quoteId : Long) : String {
+        val username = currentUsername()
         val quote : Quote = quoteRepository.findById(quoteId).get()
-        val user : User = userRepository.findById(2).get() //TODO: This user should be obtained using authentication
+        val user : User = userRepository.findOneByUsername(username)!!
         val optionalVote = voteRepository.findByUserAndQuote(user, quote)
 
         if(optionalVote.isPresent) {
@@ -57,7 +62,8 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
     @GetMapping("/votedown")
     fun voteDown(@RequestParam(name = "id") quoteId : Long) : String {
         val quote : Quote = quoteRepository.findById(quoteId).get()
-        val user : User = userRepository.findById(2).get() //TODO: This user should be obtained using authentication
+        val username = currentUsername()
+        val user : User = userRepository.findOneByUsername(username)!!
         val optionalVote = voteRepository.findByUserAndQuote(user, quote)
 
         if(optionalVote.isPresent) {
@@ -80,7 +86,8 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
     @GetMapping("/removevote")
     fun removeVote(@RequestParam(name = "id") quoteId : Long) : String {
         val quote : Quote = quoteRepository.findById(quoteId).get()
-        val user : User = userRepository.findById(2).get() //TODO: This user should be obtained using authentication
+        val username = currentUsername()
+        val user : User = userRepository.findOneByUsername(username)!!
         val optionalVote = voteRepository.findByUserAndQuote(user, quote)
         if(optionalVote.isPresent) {
             val vote = optionalVote.get()
@@ -99,9 +106,17 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
 
     @GetMapping("/list")
     fun getQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int) : String {
-        return "Not inplemented yet"
+        return "Not implemented yet"
     }
 
 
+    fun currentUsername(): String{
+        val authentication = SecurityContextHolder.getContext().authentication
+        if (authentication !is AnonymousAuthenticationToken) {
+            return authentication.name
+        }else{
+            return ""
+        }
+    }
 
 }
