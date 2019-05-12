@@ -18,7 +18,7 @@ class SecurityConfiguration(private val customUserDetailsService: CustomUserDeta
         http.csrf().disable()
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         http.authorizeRequests().antMatchers("/api/quotes/").permitAll()
-
+        http.authorizeRequests().antMatchers("/api/quotes/list").permitAll()
         http.authorizeRequests()
                 .antMatchers("/api/quotes/*").authenticated()
                 .anyRequest().permitAll()
