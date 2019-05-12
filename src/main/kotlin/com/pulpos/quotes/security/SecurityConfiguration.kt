@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
@@ -15,14 +16,14 @@ class SecurityConfiguration(private val customUserDetailsService: CustomUserDeta
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
-
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         http.authorizeRequests().antMatchers("/api/quotes/").permitAll()
-                .and().sessionManagement().disable()
+
         http.authorizeRequests()
                 .antMatchers("/api/quotes/*").authenticated()
                 .anyRequest().permitAll()
                 .and().httpBasic()
-                .and().sessionManagement().disable()
+
     }
 
     override fun configure(auth: AuthenticationManagerBuilder) {
