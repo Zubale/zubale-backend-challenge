@@ -112,11 +112,7 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
 
     fun currentUsername(): String{
         val authentication = SecurityContextHolder.getContext().authentication
-        if (authentication !is AnonymousAuthenticationToken) {
-            return authentication.name
-        }else{
-            return ""
-        }
+        return authentication.name
     }
 
 }
