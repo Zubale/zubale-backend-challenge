@@ -6,6 +6,9 @@ import com.pulpos.quotes.model.Vote
 import com.pulpos.quotes.repository.QuoteRepository
 import com.pulpos.quotes.repository.UserRepository
 import com.pulpos.quotes.repository.VoteRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 import java.time.LocalDate
@@ -105,8 +108,10 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
 
 
     @GetMapping("/list")
-    fun getQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int) : String {
-        return "Not implemented yet"
+    fun getQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int) : List<Quote> {
+        val solicitedPage : Pageable = PageRequest.of(page, pageSize)
+        val quotesPage : Page<Quote> = quoteRepository.findAll(solicitedPage)
+        return quotesPage.getContent();
     }
 
 
