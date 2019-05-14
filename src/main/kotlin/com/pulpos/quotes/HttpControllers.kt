@@ -9,6 +9,7 @@ import com.pulpos.quotes.repository.VoteRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 import java.time.LocalDate
@@ -107,11 +108,18 @@ class QuotesController(private val quoteRepository: QuoteRepository, private val
     }
 
 
-    @GetMapping("/list")
+    @GetMapping("/list", params = ["page", "pageSize"])
     fun getQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int) : List<Quote> {
         val solicitedPage : Pageable = PageRequest.of(page, pageSize)
         val quotesPage : Page<Quote> = quoteRepository.findAll(solicitedPage)
-        return quotesPage.getContent();
+        return quotesPage.content
+    }
+
+    @GetMapping("/list" , params = ["page", "pageSize", "sortBy"])
+    fun getSortedQuotePage(@RequestParam page : Int, @RequestParam pageSize : Int, @RequestParam sortBy : String) : List<Quote> {
+        val solicitedPage : Pageable = PageRequest.of(page, pageSize, Sort.by(sortBy))
+        val quotesPage : Page<Quote> = quoteRepository.findAll(solicitedPage)
+        return quotesPage.content
     }
 
 
