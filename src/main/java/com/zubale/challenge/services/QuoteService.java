@@ -25,6 +25,11 @@ public class QuoteService {
 		return quoteRepository.findAll(PageRequest.of(page, size));
 	}
 
+	public Quote findById(int id) {
+		return quoteRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException(String.format("The requested quote %d doesn't exists ", id)));
+	}
+
 	public Quote create(Quote quote) {
 		return quoteRepository.save(quote);
 	}
@@ -35,7 +40,19 @@ public class QuoteService {
 			return quoteRepository.save(quote);
 		} else {
 			throw new ResourceNotFoundException(
-					String.format("Quote %s cannot be updated because it doesn't exists ", id));
+					String.format("Quote %d cannot be updated because it doesn't exists ", id));
+		}
+	}
+
+	public Quote vote(int id) {
+		Optional<Quote> optional = quoteRepository.findById(id);
+		if (optional.isPresent()) {
+			Quote quote = optional.get();
+			quote.setLikes(quote.getLikes() + 1);
+			return quoteRepository.save(quote);
+		} else {
+			throw new ResourceNotFoundException(
+					String.format("Quote %d cannot be voted because it doesn't exists ", id));
 		}
 	}
 

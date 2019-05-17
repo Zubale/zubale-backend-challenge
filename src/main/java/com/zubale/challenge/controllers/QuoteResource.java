@@ -35,6 +35,11 @@ public class QuoteResource {
 		return new ResponseEntity<Page<Quote>>(quoteService.findAll(page, size), HttpStatus.OK);
 	}
 
+	@GetMapping("/{id}")
+	public ResponseEntity<Quote> findById(@PathVariable("id") int id) {
+		return new ResponseEntity<Quote>(quoteService.findById(id), HttpStatus.OK);
+	}
+
 	@PostMapping
 	public ResponseEntity<Quote> create(@RequestBody Quote quote) {
 		return new ResponseEntity<Quote>(quoteService.create(quote), HttpStatus.CREATED);
@@ -43,6 +48,11 @@ public class QuoteResource {
 	@PutMapping("/{id}")
 	public ResponseEntity<Quote> update(@PathVariable("id") int id, @RequestBody Quote quote) {
 		return new ResponseEntity<Quote>(quoteService.update(id, quote), HttpStatus.OK);
+	}
+
+	@PostMapping("/{id}/votes")
+	public ResponseEntity<Quote> vote(@PathVariable("id") int id) {
+		return new ResponseEntity<Quote>(quoteService.vote(id), HttpStatus.OK);
 	}
 
 }

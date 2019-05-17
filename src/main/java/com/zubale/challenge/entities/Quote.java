@@ -66,5 +66,5 @@ public class Quote implements Serializable {
 	public void setLikes(Integer likes) {
 		this.likes = likes;
 	}
-
+	
 }
