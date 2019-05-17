@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.zubale.challenge.entities.Quote;
@@ -22,7 +24,7 @@ public class QuoteService {
 	private QuoteRepository quoteRepository;
 
 	public Page<Quote> findAll(int page, int size) {
-		return quoteRepository.findAll(PageRequest.of(page, size));
+		return quoteRepository.findAll(PageRequest.of(page, size, Sort.by(Direction.DESC, "likes")));
 	}
 
 	public Quote findById(int id) {
