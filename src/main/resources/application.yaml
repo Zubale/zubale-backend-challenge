@@ -1,0 +1,12 @@
+server:  
+  port: 8088
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: discover.medical.ccms-sdlproxy
+
+logging:
+  level:
+    root: INFO

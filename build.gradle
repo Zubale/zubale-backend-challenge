@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+	id 'io.franzbecker.gradle-lombok' version '1.14'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+apply plugin: 'io.franzbecker.gradle-lombok'
+lombok {
+    version = '1.18.4'
+}
+
+group = 'personal.teslafoil.zubale'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+}
