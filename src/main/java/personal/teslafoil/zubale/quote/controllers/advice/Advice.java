@@ -29,11 +29,11 @@ public class Advice {
          * if a different logging level and HTTP status is needed.
          */
         MAPPINGS.put(
-                Exception.class, 
+                Exception.class,
                 new Mapping(Level.ERROR, HttpStatus.INTERNAL_SERVER_ERROR)
                 );
         MAPPINGS.put(
-                HttpMessageConversionException.class, 
+                HttpMessageConversionException.class,
                 new Mapping(Level.ERROR, HttpStatus.BAD_REQUEST)
                 );
     }

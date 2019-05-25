@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: discover.medical.ccms-sdlproxy
+    name: Inspirational Quote Machine
 
 logging:
   level:
