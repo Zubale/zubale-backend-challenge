@@ -10,6 +10,8 @@ public interface QuoteService {
 
     public List<Quote> findAll();
 
+    public List<Quote> findAllOrderByMostVoted();
+
     public Page<Quote> findAll(Pageable pageable);
 
     public Quote findById(Long id);

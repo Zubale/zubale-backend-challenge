@@ -16,3 +16,26 @@ The requirements are:
 9. When you are done, open a PR from your fork to this repo
 
 Your solution does not need a front end, it can be just APIs. You are also free to use any technology or libraries you like, but extra points will be given for Kotlin and Spring. 
+
+
+#How to Install and Run
+1.You should have a mysql installed v8  
+2.Create at Mysql a DB for the project  
+3.Change your DB login credentials in the application.properties    
+4.Run file TechnicalTestApplication 
+5.You need to login first against   
+/oauth/token (POST with values username : andres, password: 12345, grant_type: password}) you should use x-www-form-urlencoded for login    
+Use the access_token generated as Authorization Bearer Token to call de APIS    
+6.Call some endpoint at (endpoints requires you to be logged):  
+/api/quotes (GET , POST)    
+/api/quotes/most-voted (GET )    
+/api/users (GET , POST)     
+/api/votes (GET , POST)     
+
+Note: Here is a postman collection with a guidance of the requests
+https://www.getpostman.com/collections/345ba15dc999c3dde6e4 
+
+To import it you need :     
+1.Install postman   
+2.Click on file-> Import -> Import from link    
+

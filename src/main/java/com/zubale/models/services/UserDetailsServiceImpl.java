@@ -4,6 +4,8 @@ import com.zubale.models.dao.UserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -48,5 +50,35 @@ public class UserDetailsServiceImpl implements UserDetailsService,UserService {
     @Transactional(readOnly = true)
     public com.zubale.models.entity.User findByUsername(String username) {
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<com.zubale.models.entity.User> findAll() {
+        return (List<com.zubale.models.entity.User>) userDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<com.zubale.models.entity.User> findAll(Pageable pageable){
+        return  userDao.findAll(pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public com.zubale.models.entity.User findById(Long id) {
+        return userDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public com.zubale.models.entity.User save(com.zubale.models.entity.User quote) {
+        return userDao.save(quote);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        userDao.deleteById(id);
     }
 }

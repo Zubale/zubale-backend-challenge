@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users" )
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, length = 20)
+    @Column(unique = true, length = 20, nullable = false)
     private String username;
 
     @Column(length = 60)
@@ -26,26 +26,39 @@ public class User implements Serializable {
 
     private String lastname;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "quote_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @NotNull(message = "User is required")
+    @NotNull(message = "Quote required")
+    @JoinColumn(name = "user_id")
     private List<Quote> quotes;
 
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @NotNull(message = "Vote required")
+    @JoinColumn(name = "user_id")
+    private List<Vote> votes;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"users","hibernateLazyInitializer","handler"}, allowSetters = true)
     @JoinTable(name = "users_roles",
             joinColumns         = @JoinColumn(name = "user_id"),
             inverseJoinColumns  = @JoinColumn(name = "role_id"),
             uniqueConstraints   = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
     private List<Role> roles;
 
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
 
     public List<Role> getRoles() {
         return roles;

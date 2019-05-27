@@ -5,10 +5,12 @@ import com.zubale.models.entity.Quote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class QuoteServiceImpl implements QuoteService {
 
     @Autowired
@@ -18,6 +20,12 @@ public class QuoteServiceImpl implements QuoteService {
     @Transactional(readOnly = true)
     public List<Quote> findAll() {
         return (List<Quote>) quoteDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Quote> findAllOrderByMostVoted() {
+        return (List<Quote>) quoteDao.findAllOrderByMostVoted();
     }
 
     @Override

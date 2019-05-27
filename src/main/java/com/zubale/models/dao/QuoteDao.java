@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface QuoteDao extends JpaRepository<Quote, Long> {
 
-    @Query("from Quote order by ")
-    public List<Quote> findAllRegiones();
+    @Query("from Quote")
+    public List<Quote> findAllQuotes();
+
+
+    @Query("from Quote q order by size(q.votes) desc ")
+    public List<Quote> findAllOrderByMostVoted();
 }

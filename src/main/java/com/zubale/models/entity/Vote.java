@@ -11,7 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "votes")
+@Table(name = "votes",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"user_id","quote_id"}))
 public class Vote implements Serializable {
 
     @Id
@@ -20,11 +21,29 @@ public class Vote implements Serializable {
 
     private Date createAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @NotNull(message = "User is required")
-    private User user;
+    @NotNull
+    @Column(name = "user_id")
+    private Long userId;
+
+    @NotNull
+    @Column(name = "quote_id")
+    private Long quoteId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getQuoteId() {
+        return quoteId;
+    }
+
+    public void setQuoteId(Long quoteId) {
+        this.quoteId = quoteId;
+    }
 
     public Long getId() {
         return id;
@@ -40,14 +59,6 @@ public class Vote implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     private static final long serialVersionUID = 1L;

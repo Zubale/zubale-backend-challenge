@@ -1,4 +1,4 @@
-package com.zubale.technicaltest;
+package com.zubale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
