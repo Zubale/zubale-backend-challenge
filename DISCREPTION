@@ -1,0 +1,18 @@
+To run unit test: gradlew clean test
+To run integration test: gradlew clean integrationTest
+To run application: gradlew clean bootRun
+Swagger UI: http://localhost:8088/swagger-ui.html
+
+As the requests are stateless, it makes sense to build the service as a RESTful API
+It is built as a SpringBoot application, with standard controller - service, and a swagger-ui for manual manipulation
+All runtime exceptions are handled by a controller advice, with mapping for bad request or internal error, and is returned as a json error message object
+I created an interface for data source so even though this particular application runs in memory, it can be easily modified to use a different data source such as a database
+Business logics are handled by service layer
+Object specific behaviors are handled within the objects (how a vote is applied to a quote)
+
+For testing, unit tests are created to cover controller, service, object model behavior and error handling
+While integration tests are created to handle business test cases such as attempting to add an existing quote again, vote on a nonexistent quote, or display quote list
+
+Qiming Zou
+zqqmmm@gmail.com
+617-259-8354
